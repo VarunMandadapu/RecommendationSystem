@@ -1,0 +1,192 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Knowledge Test</title>
+      <style>
+        .button {
+  background-color: #0000FF;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+h1 {
+
+  font-size: 35px;
+}
+ 
+ p {
+
+
+font-size: 35px;
+
+ }
+
+ seems-h1 {
+
+  font-size: 22px;
+
+}
+
+
+input[type=text],input[type=password],input[type=number],input[type=email],
+select,input[type=date]
+{
+  width: 20%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  background-color: ghostwhite;
+}
+
+label 
+{
+  padding: 12px 12px 12px ;
+  border-radius: 20px;
+  display: inline-block;
+  font-weight: bold;
+  background-color: white;
+
+}
+ header img {
+    height: 80px;
+    margin-left: 40px;
+}
+body {
+    height: 125vh;
+    /*background-image: url('https://codetheweb.blog/assets/img/posts/style-a-navigation-bar-css/background.jpg');*/
+    background-color: white;
+    background-size: cover;
+    font-family: sans-serif;
+    margin-top: 80px;
+    padding: 30px;
+}
+
+main {
+    color: black;
+}
+
+header {
+    background-color: black;
+    font-display: white;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 0 25px 0 black;
+}
+
+header * {
+    display: inline;
+}
+
+header li {
+    margin: 20px;
+}
+
+header li a {
+    color: white;
+    text-decoration: none;
+}
+      </style>
+    </head>
+    <body>
+        <header>
+            <!-- <img src="https://codetheweb.blog/assets/img/icon2.png" -->>
+            <nav>
+                <ul>
+                    <li><a href="{% url 'studenthome'%}">Home</a></li>
+<!--                     <li><a href="{% url 'displayquiz'%}" >Knowledge Test</a>&nbsp;&nbsp;</li>
+                    <li><a href="#" >Scores</a>&nbsp;&nbsp;</li>
+                    <li><a href="#" >View Courses</a>&nbsp;&nbsp;</li> -->
+                    <li><a href="{% url 'studentlog'%}">Logout</a>&nbsp;&nbsp;</li>
+                </ul>
+            </nav>
+        </header> 
+        <main>
+            <center><h1>Personality Test for {{susername}}</h1></center> 
+
+            <form method="POST" action="{% url 'savequiz' %}">
+              {% csrf_token %}
+            <ul>
+
+                {% for ques in quizqb %}
+               
+                <!-- <p style="color:red;">{{ques.category}}</p> -->
+                 <p>{{ques.question}}</p>
+
+               
+                 <input type="radio" name="{{ques.question_rid}}" value="answer1" required><label>{{ques.answer1}}</label><br>
+                 <input type="radio" name="{{ques.question_rid}}" value="answer2" required><label>{{ques.answer2}}</label><br>
+                 <input type="radio" name="{{ques.question_rid}}" value="answer3" required><label>{{ques.answer3}}</label><br>
+                 <input type="radio" name="{{ques.question_rid}}" value="answer4" required><label>{{ques.answer4}}</label><br>
+
+
+                 <hr>
+                 <br>
+
+                 
+                {% endfor %}  
+
+                
+               
+
+
+
+            </ul>
+
+                  <center><button class="button">Submit Quiz</button></center>
+            </form>
+
+        </main>
+    </body>
+</html>
+
+<!-- 
+                 <input type="radio" name="{{ques.question_id}}" value="{{ques.answer1}}" required>{{ques.answer1}}<br>
+                 <input type="radio" name="{{ques.question_id}}" value="{{ques.answer2}}" required>{{ques.answer2}}<br>
+                 <input type="radio" name="{{ques.question_id}}" value="{{ques.answer3}}" required>{{ques.answer3}}<br>
+                 <input type="radio" name="{{ques.question_id}}" value="{{ques.answer4}}" required>{{ques.answer4}}<br> -->
+<!-- <html>
+
+<title>Knowledge Test </title>
+<center><h1>Knowledge Test </h1></center>
+
+<style type="text/css">
+  .button {
+  background-color: #0000FF;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+h1 {
+
+  font-size: 35px;
+}
+ 
+ p {
+
+
+font-size: 35px;
+
+ }
+
+ seems-h1 {

@@ -1,0 +1,6 @@
+quiz result
+
+id(auto)
+username(session variable)
+score
+timestamp

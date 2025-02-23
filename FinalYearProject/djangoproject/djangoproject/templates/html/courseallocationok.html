@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>COURSE ALLOCATION</title>
+   <script>
+function myFunction() {
+  var input, filter, table, tr, td, i, txtValue;
+  input = document.getElementById("myInput");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("myTable");
+  tr = table.getElementsByTagName("tr");
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[2];
+    if (td) {
+      txtValue = td.textContent || td.innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }       
+  }
+}
+</script>
+
+
+
+      <style>
+
+* {
+  box-sizing: border-box;
+}
+
+#myInput {
+  background-image: url('/css/searchicon.png');
+  background-position: 10px 10px;
+  background-repeat: no-repeat;
+  width: 100%;
+  font-size: 16px;
+  padding: 12px 20px 12px 40px;
+  border: 1px solid #ddd;
+  margin-bottom: 12px;
+}
+
+#myTable {
+  border-collapse: collapse;
+  width: 100%;
+  border: 1px solid #ddd;
+  font-size: 18px;
+}
+
+#myTable th, #myTable td {
+  text-align: left;
+  padding: 12px;
+}
+
+#myTable tr {
+  border-bottom: 1px solid #ddd;
+}
+
+#myTable tr.header, #myTable tr:hover {
+  background-color: #f1f1f1;
+}
+
+table{
+   width:100%;
+   table-layout: fixed;
+   overflow-wrap: break-word;
+}
+
+
+
+        .button {
+  background-color: #0000FF;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+input[type=text],input[type=password],input[type=number],input[type=email],
+select,input[type=date]
+{
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  background-color: ghostwhite;
+}
+
+label 
+{
+  padding: 12px 12px 12px ;
+  border-radius: 20px;
+  display: inline-block;
+  font-weight: bold;
+  background-color: white;
+
+}
+        header img {
+    height: 80px;
+    margin-left: 40px;
+}
+body {
+    height: 125vh;
+    /*background-image: url('https://codetheweb.blog/assets/img/posts/style-a-navigation-bar-css/background.jpg');*/
+    background-size: cover;
+    font-family: sans-serif;
+    margin-top: 80px;
+    padding: 30px;
+}
+
+main {
+    color: black;
+}
+h5 {
+    font-size: 20px;
+}
+header {
+    background-color: black;
+    font-display: white;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 0 25px 0 black;
+}
+
+header * {
+    display: inline;
+}
+
+header li {
+    margin: 20px;
+}
+
+header li a {
+    color: white;
+    text-decoration: none;
+}
+      </style>
+    </head>
+    <body>
+        <header>
+           <!-- <img src="https://codetheweb.blog/assets/img/icon2.png"> -->
+            <nav>
+                <ul>
+<li><a href="{% url 'adminhome'%}">HOME</a>&nbsp;&nbsp;</li>
+
+    <!-- <li><a href="{% url 'studentreg'%}" >ADD STUDENT</a>&nbsp;&nbsp;</li>
+    <li><a href="{% url 'facultyreg'%}" >ADD FACULTY</a>&nbsp;&nbsp;</li>
+
+    <li><a href="{% url 'addcourse'%}">ADD COURSE</a>&nbsp;&nbsp;</li>
+    <li><a href="{% url 'viewcourses'%}">VIEW COURSES</a>&nbsp;&nbsp;</li>
+    <li><a href="{% url 'courseallocation'%}">COURSE ALLOCATION</a>&nbsp;&nbsp;</li>
+
+
+    <li><a href="{% url 'addquiz'%}" >ADD KNOWLEDGE TEST</a>&nbsp;&nbsp;</li> -->
+
+
+    <li><a href="{% url 'adminlog'%}">Logout</a>&nbsp;&nbsp;</li>
+                </ul>
+            </nav>
+        </header>
+        <main>
+            <h1 style="font-display:top-right-corner;">Welcome {{ausername}}</h1>
+            <form method="POST" >
+            <h1 style="background-color: white;"align=center>COURSE ALLOCATION</h1><br>
+
+{% if msg%}
+
+
+<h3 align="center" style="color:red">{{msg}}</h3>
+
+{% endif %}
+
+
+                {% csrf_token %}
+          <!--       {% for field in form %}
+                <label>{{field.label}}</label>
+                {{field}}
+                {% endfor %} -->
+<!-- 
+                        <div class="field"> -->
+            <label for=fusername>Faculty Username</label>
+
+              <select id="fusername" name="fusername">
+                <option value=""></option>
+
+                {% for faculty in facultys%}
+                <option value={{faculty.username}}>{{faculty.username}}</option>
+                {% endfor %}
+              </select>
+                          <label for=course_code>Course Code</label>
+
+              <select id="course_code" name="course_code">
+                <option value=""></option>
+                {% for f in c%}
+                <option value={{f.course_code}}>{{f.course_code}}</option>
+                {% endfor %}
+              </select>
+                          <label for=course_title>Course Title</label>
+
+              <select id="course_title" name="course_title">
+                <option value=""></option>
+                {% for f in c %}
+                <option value={{f.course_title}}>{{f.course_title}}</option>
+                {% endfor %}
+              </select>
+     
+
+            <button class="button">SUBMIT</button>
+            </form>
+        </main>
+
+
+<br>
+<br>
+<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search by Name">
+
+<table align=center id="myTable">
+
+ <tr class="header">
+
+<th>Faculty Username</th>
+<th>Course Code</th>
+<th>Course Title</th>
+
+
+</tr>
+
+{% for course in courses %}
+
+<tr>
+
+        <td>{{ course.fusername }}</td>
+         <td>{{ course.course_code }}</td>
+         <td>{{ course.course_title }}</td>
+
+</tr>
+
+{% endfor %}
+
+
+</table>
+
+
+
+
+
+
+
+
+
+<!--  -->
+
+
+
+
+    </body>
+</html>

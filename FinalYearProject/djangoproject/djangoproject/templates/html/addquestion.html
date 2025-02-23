@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Add Test</title>
+      <style>
+        .button {
+  background-color: #0000FF;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+input[type=text],input[type=password],input[type=number],input[type=email],
+select,input[type=date]
+{
+  width: 20%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  background-color: ghostwhite;
+}
+
+label 
+{
+  padding: 12px 12px 12px ;
+  border-radius: 20px;
+  display: inline-block;
+  font-weight: bold;
+  background-color: white;
+
+}
+        header img {
+    height: 80px;
+    margin-left: 40px;
+}
+body {
+    height: 125vh;
+    /*background-image: url('https://codetheweb.blog/assets/img/posts/style-a-navigation-bar-css/background.jpg');*/
+    background-color: lightcyan;
+    background-size: cover;
+    font-family: sans-serif;
+    margin-top: 80px;
+    padding: 30px;
+}
+
+main {
+    color: black;
+}
+
+header {
+    background-color: black;
+    font-display: white;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 0 25px 0 black;
+}
+
+header * {
+    display: inline;
+}
+
+header li {
+    margin: 20px;
+}
+
+header li a {
+    color: white;
+    text-decoration: none;
+}
+      </style>
+    </head>
+    <body>
+        <header>
+           <!-- <img src="https://codetheweb.blog/assets/img/icon2.png"> -->
+            <nav>
+                <ul>
+                     <li><a href="{% url 'adminhome'%}">HOME</a>&nbsp;&nbsp;</li>
+                    <li><a href="{% url 'studentreg'%}" >ADD STUDENT</a>&nbsp;&nbsp;</li>
+                    <li><a href="{% url 'facultyreg'%}" >ADD FACULTY</a>&nbsp;&nbsp;</li>
+                    <li><a href="#">ADD COURSE</a>&nbsp;&nbsp;</li>
+                    <li><a href="#">VIEW COURSE</a>&nbsp;&nbsp;</li>
+                    <li><a href="{% url 'addtest'%}" >ADD TEST</a>&nbsp;&nbsp;</li>
+                    <li><a href="#">VIEW RESULTS</a>&nbsp;&nbsp;</li>
+                </ul>
+            </nav>
+        </header>
+        <main>
+                        
+            <h1>Category added </h1>
+             <h1> Now Add Question</h1>
+            <form method="POST" >
+                  {% csrf_token %}
+                  {% for field in form %}
+
+                  <ul>{{field.label}}</ul>
+                  {{field}}
+                  {% endfor %}<br><br>
+                  <button class="button">SUBMIT</button>
+            </form>
+             
+
+            <h1>If already added </h1>
+            <a href="{% url 'addanswer'%}">TO add answer</a>
+            <h2>Do you want to add another Category ?<a href="{% url 'addtest'%}">Click here</a></h2>
+        </main>
+    </body>
+</html>
+
+
+
+
+<!-- 
+
+<html>
+<body>
+<h1>Category added </h1>
+ <h1> Now Add Question</h1>
+<form method="POST" >
+      {% csrf_token %}
+      {% for field in form %}
+
+      <ul>{{field.label}}</ul>
+      {{field}}
+      {% endfor %}
+      <button>SUBMIT</button>
+</form>
+ 
+
+<h1>If already added </h1>
+<a href="{% url 'addanswer'%}">TO add answer</a>
+<h2>Do you want to add another Category ?<a href="{% url 'addtest'%}">Click here</a></h2>
+</body>
+</html> -->

@@ -1,0 +1,745 @@
+<!-- 
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Student Home</title>
+      <style>
+        .button {
+  background-color: #0000FF;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+.welcome-text {
+  position: absolute;
+  width: 600px;
+  height: 300px;
+  margin: 18% 35%;
+  text-align: center;
+}
+.welcome-text h1 {
+  text-align: top-right;
+  color: #fff;
+  text-transform: uppercase;
+  font-size: 40px;
+}
+.welcome-text h2 {
+  text-align: center;
+  color: #fff;
+  text-transform: uppercase;
+  font-size: 40px;
+}
+.welcome-text h1 span {
+  color: #00fecb;
+}
+.welcome-text a {
+  border: 1px solid #fff;
+  padding: 10px 25px;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 14px;
+  margin-top: 20px;
+  display: inline-block;
+  color: #fff;
+}
+.welcome-text a:hover {
+  background: #fff;
+  color: #333;
+}
+@media (max-width:600px) {
+  .welcome-text {
+    width: 100%;
+    height: auto;
+    margin: 30% 0;
+  }
+  .welcome-text h1 {
+    font-size: 30px;
+
+  }
+
+}
+h1 {
+
+  font-size: 35px;
+}
+ 
+ p {
+
+
+font-size: 35px;
+
+ }
+
+ seems-h1 {
+
+  font-size: 22px;
+
+}
+
+
+input[type=text],input[type=password],input[type=number],input[type=email],
+select,input[type=date]
+{
+  width: 20%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  background-color: ghostwhite;
+}
+
+label 
+{
+  padding: 12px 12px 12px ;
+  border-radius: 20px;
+  display: inline-block;
+  font-weight: bold;
+  background-color: white;
+
+}
+ header img {
+    height: 80px;
+    margin-left: 40px;
+}
+body {
+    height: 125vh;
+    /*background-image: url('https://codetheweb.blog/assets/img/posts/style-a-navigation-bar-css/background.jpg');*/
+    background-color: white;
+    background-size: cover;
+    font-family: sans-serif;
+    margin-top: 80px;
+    padding: 30px;
+}
+
+main {
+    color: black;
+}
+
+header {
+    background-color: black;
+    font-display: white;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 0 25px 0 black;
+}
+
+header * {
+    display: inline;
+}
+
+header li {
+    margin: 20px;
+}
+
+header li a {
+    color: white;
+    text-decoration: none;
+}
+      </style>
+    </head>
+    <body>
+        <header>
+            
+            <nav>
+                <ul>
+                    <li><a href="home">HOME</a>&nbsp;&nbsp;</li>
+                    <li><a href="{% url 'displayquiz'%}">Knowldege Test</a>&nbsp;&nbsp;&nbsp;&nbsp;</li>
+                    <li><a href="#">CHANGE PASSWORD</a>&nbsp;&nbsp;&nbsp;&nbsp;</li>
+                    <li><a href="#">LOGOUT</a>&nbsp;&nbsp;&nbsp;</li>
+                </ul>
+            </nav>
+        </header> 
+        <main>
+            
+            <div class="welcome-text">
+              <h1 style="font-display:top-right;">Welcome To Student Home</h1>  
+            </div>      
+            
+
+        </main>
+    </body>
+</html>
+ -->
+
+<!-- <html>
+
+<title>Knowledge Test </title>
+<center><h1>Knowledge Test </h1></center>
+
+<style type="text/css">
+  .button {
+  background-color: #0000FF;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+h1 {
+
+  font-size: 35px;
+}
+ 
+ p {
+
+
+font-size: 35px;
+
+ }
+
+ seems-h1 {
+
+  font-size: 22px;
+
+}
+label 
+{
+  padding: 12px 12px 12px ;
+  border-radius: 20px;
+  display: inline-block;
+  font-weight: bold;
+  background-color: white;
+
+}
+</style>
+<form method="POST">
+  {% csrf_token %}
+<ul>
+    {% for Question in questions %}
+      
+      <p><label name="qid" class="qid">{{Question.auto_increment_id}}</label> .  {{Question.question}} ? {{Question.marks}} Marks </p>
+        
+          {% for Answer in answers %}
+            {% if Question.auto_increment_id == Answer.question_id %}
+              <input type="radio" class="answer" value="{{Answer.auto_increment_id}}"/>
+              <label name="{{Answer.auto_increment_id}}" style="font-size: 22px">{{Answer.answer}}</label><br>
+            {% endif %}
+        {% endfor %}
+       
+
+    {% endfor %}
+</ul>
+
+      <center><button class="button">SUBMIT</button></center>
+    </f<orm>
+</html> -->
+
+
+<!-- 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+    {% load static %}
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+  margin: 0;
+  padding: 0;
+}
+.body {
+  font-family: 'Poppins', sans-serif;
+    -moz-background-size: cover;
+    -webkit-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    background-color: black;
+}
+.wrapper {
+  width: 1900px;
+  position: fixed;
+}
+.nav-area {
+  float: right;
+  list-style: none;
+  margin-top: 30px;
+}
+.nav-area li {
+  display: inline-block;
+}
+.nav-area li a {
+  color: #fff;
+  text-decoration: none;
+  padding: 5px 20px;
+  font-family: poppins;
+  font-size: 16px;
+  text-transform: uppercase;
+}
+.nav-area li a:hover {
+  background-color: powderblue;;
+  color: #333;
+}
+.logo {
+  float: left;
+}
+.logo img {
+  width: 150px;
+    height: 90px;
+}
+.welcome-text {
+  position: absolute;
+  width: 600px;
+  height: 300px;
+  margin: 18% 35%;
+  text-align: center;
+}
+.welcome-text h1 {
+  text-align: top-right;
+  color: #fff;
+  text-transform: uppercase;
+  font-size: 40px;
+}
+.welcome-text h2 {
+  text-align: center;
+  color: #fff;
+  text-transform: uppercase;
+  font-size: 40px;
+}
+.welcome-text h1 span {
+  color: #00fecb;
+}
+.welcome-text a {
+  border: 1px solid #fff;
+  padding: 10px 25px;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 14px;
+  margin-top: 20px;
+  display: inline-block;
+  color: #fff;
+}
+.welcome-text a:hover {
+  background: #fff;
+  color: #333;
+}
+.log{
+  padding: 10px;
+  width: 27%;
+  margin:13% auto;
+  background: #fff;
+  border-radius: 10px;
+  align-items: center;
+  text-align: center;
+}
+.log input{
+  width: 70%;
+  padding: 12px;
+  border-radius: 8px;
+  border: #000 2px solid;
+  text-decoration: none;
+  background: #fff;
+  margin: 3% auto;
+}
+.log textarea{
+  width: 70%;
+  padding: 12px;
+  border-radius: 8px;
+  border: #000 2px solid;
+  text-decoration: none;
+  background: #fff;
+  margin: 3% auto;
+}
+.log input:focus{
+  outline: none;
+}
+.log textarea:focus{
+  outline: none;
+}
+.log a{
+  color:#333;
+  text-decoration: none;
+}
+.log button{
+  width: 25%;
+  border-radius: 20px;
+  background: #000;
+  color: #fff;
+  border: none;
+  outline: none;
+  padding: 12px;
+}
+.abt{
+  padding: 20px;
+  width: 90%;
+  margin:2% auto;
+  background: #fff;
+  border-radius: 20px;
+  align-items: center;
+}
+.abt h3{
+  line-height: 2em;
+}
+.cards {
+    margin: 5% auto;
+    max-width: 1500px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-auto-rows: auto;
+    gap: 50px;
+    font-family: sans-serif;
+    padding-top: 30px;
+    padding-bottom: 60px;
+  }
+  .cards * {
+    box-sizing: border-box;
+  }
+  .card{
+    box-shadow: 0px 0px 5px 5px rgba(0, 0, 0, 0.4);
+    transition-duration: 1s;
+    background-color: #fff;
+  }
+  .card:hover{
+    transform: scale(1.12);
+  }
+  .card_image {
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+    display: block;
+  }
+  .card_content {
+    line-height: 1.5;
+    font-size: 0.9em;
+    padding: 10px;
+  }
+  .cnt{
+      margin: 10% auto;
+  }
+/*resposive*/
+
+@media (max-width:600px) {
+  .wrapper {
+    width: 100%;
+  }
+  .logo {
+    float: none;
+    width: 50%;
+    text-align: center;
+    margin: auto;
+  }
+  .nav-area {
+    float: none;
+    margin-top: 0;
+    background-color: white;
+  }
+  .nav-area li a {
+    padding: 5px;
+    font-size: 11px;
+
+  }
+  .nav-area {
+    text-align: center;
+  }
+  .welcome-text {
+    width: 100%;
+    height: auto;
+    margin: 30% 0;
+  }
+  .welcome-text h1 {
+    font-size: 30px;
+
+  }
+}
+</style>
+</head>
+
+   <header>
+    
+	<ul style="height: 40px;" class="nav-area">
+  
+    
+
+<a href="#">HOME</a>&nbsp;&nbsp;&nbsp;&nbsp;
+<a style="background-color: white"href="{% url 'displayquiz'%}">Knowldege Test</a>&nbsp;&nbsp;&nbsp;&nbsp;
+<a style="background-color: white"href="#">CHANGE PASSWORD</a>&nbsp;&nbsp;&nbsp;&nbsp;
+<a style="background-color: white"href="#">LOGOUT</a>&nbsp;&nbsp;&nbsp;&nbs
+</ul>
+</header>
+<body style="background-color: black;">
+<div class="welcome-text">
+	<h1 style="font-display:top-right;">Welcome To Student Home</h1>	
+</div>
+
+</body>
+</html>
+<script>
+  window.watsonAssistantChatOptions = {
+      integrationID: "bcf6552a-f87a-44c2-a298-d255c5600766", // The ID of this integration.
+      region: "eu-gb", // The region your integration is hosted in.
+      serviceInstanceID: "efefbb08-9ce4-4d33-97c1-72f729cd0621", // The ID of your service instance.
+      onLoad: function(instance) { instance.render(); }
+    };
+  setTimeout(function(){
+    const t=document.createElement('script');
+    t.src="https://web-chat.global.assistant.watson.appdomain.cloud/loadWatsonAssistantChat.js";
+    document.head.appendChild(t);
+  });
+</script> -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+    {% load static %}
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+  margin: 0;
+  padding: 0;
+}
+.body {
+  font-family: 'Poppins', sans-serif;
+    -moz-background-size: cover;
+    -webkit-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    background-color: black;
+}
+.wrapper {
+  width: 1900px;
+  position: fixed;
+}
+.nav-area {
+  float: right;
+  list-style: none;
+  margin-top: 30px;
+}
+.nav-area li {
+  display: inline-block;
+}
+.nav-area li a {
+  color: #fff;
+  text-decoration: none;
+  padding: 5px 20px;
+  font-family: poppins;
+  font-size: 16px;
+  text-transform: uppercase;
+}
+.nav-area li a:hover {
+  background-color: powderblue;;
+  color: #333;
+}
+.logo {
+  float: left;
+}
+.logo img {
+  width: 150px;
+    height: 90px;
+}
+.welcome-text {
+  position: absolute;
+  width: 600px;
+  height: 300px;
+  margin: 18% 35%;
+  text-align: center;
+}
+.welcome-text h1 {
+  text-align: top-right;
+  color: #fff;
+  text-transform: uppercase;
+  font-size: 40px;
+}
+.welcome-text h2 {
+  text-align: center;
+  color: #fff;
+  text-transform: uppercase;
+  font-size: 40px;
+}
+.welcome-text h1 span {
+  color: #00fecb;
+}
+.welcome-text a {
+  border: 1px solid #fff;
+  padding: 10px 25px;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 14px;
+  margin-top: 20px;
+  display: inline-block;
+  color: #fff;
+}
+.welcome-text a:hover {
+  background: #fff;
+  color: #333;
+}
+.log{
+  padding: 10px;
+  width: 27%;
+  margin:13% auto;
+  background: #fff;
+  border-radius: 10px;
+  align-items: center;
+  text-align: center;
+}
+.log input{
+  width: 70%;
+  padding: 12px;
+  border-radius: 8px;
+  border: #000 2px solid;
+  text-decoration: none;
+  background: #fff;
+  margin: 3% auto;
+}
+.log textarea{
+  width: 70%;
+  padding: 12px;
+  border-radius: 8px;
+  border: #000 2px solid;
+  text-decoration: none;
+  background: #fff;
+  margin: 3% auto;
+}
+.log input:focus{
+  outline: none;
+}
+.log textarea:focus{
+  outline: none;
+}
+.log a{
+  color:#333;
+  text-decoration: none;
+}
+.log button{
+  width: 25%;
+  border-radius: 20px;
+  background: #000;
+  color: #fff;
+  border: none;
+  outline: none;
+  padding: 12px;
+}
+.abt{
+  padding: 20px;
+  width: 90%;
+  margin:2% auto;
+  background: #fff;
+  border-radius: 20px;
+  align-items: center;
+}
+.abt h3{
+  line-height: 2em;
+}
+.cards {
+    margin: 5% auto;
+    max-width: 1500px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-auto-rows: auto;
+    gap: 50px;
+    font-family: sans-serif;
+    padding-top: 30px;
+    padding-bottom: 60px;
+  }
+  .cards * {
+    box-sizing: border-box;
+  }
+  .card{
+    box-shadow: 0px 0px 5px 5px rgba(0, 0, 0, 0.4);
+    transition-duration: 1s;
+    background-color: #fff;
+  }
+  .card:hover{
+    transform: scale(1.12);
+  }
+  .card_image {
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+    display: block;
+  }
+  .card_content {
+    line-height: 1.5;
+    font-size: 0.9em;
+    padding: 10px;
+  }
+  .cnt{
+      margin: 10% auto;
+  }
+/*resposive*/
+
+@media (max-width:600px) {
+  .wrapper {
+    width: 100%;
+  }
+  .logo {
+    float: none;
+    width: 50%;
+    text-align: center;
+    margin: auto;
+  }
+  .nav-area {
+    float: none;
+    margin-top: 0;
+    background-color: white;
+  }
+  .nav-area li a {
+    padding: 5px;
+    font-size: 11px;
+
+  }
+  .nav-area {
+    text-align: center;
+  }
+  .welcome-text {
+    width: 100%;
+    height: auto;
+    margin: 30% 0;
+  }
+  .welcome-text h1 {
+    font-size: 30px;
+
+  }
+}
+</style>
+</head>
+
+   <header>
+    
+  <ul style="height: 40px;" class="nav-area">
+  
+    <li><a href="{% url 'studenthome'%}">HOME</a>&nbsp;&nbsp;</li>
+    <li><a href="{% url 'displayquiz'%}" >Personality Test</a>&nbsp;&nbsp;</li>
+    <li><a href="{% url 'viewcourses'%}" >View all Courses</a>&nbsp;&nbsp;</li>
+   <!--  <li><a href="{% url 'mycourses'%}" >Registered Courses</a>&nbsp;&nbsp;</li> -->
+    <li><a href="{% url 'studentlog'%}">logout</a>&nbsp;&nbsp;</li>
+     
+</ul>
+</header>
+<body style="background-color: black;">
+<div class="welcome-text">
+  <h1 style="font-display:top-right;">Welcome {{susername}}</h1>  
+</div>
+
+</body>
+</html>
+<script>
+  window.watsonAssistantChatOptions = {
+      integrationID: "bcf6552a-f87a-44c2-a298-d255c5600766", // The ID of this integration.
+      region: "eu-gb", // The region your integration is hosted in.
+      serviceInstanceID: "efefbb08-9ce4-4d33-97c1-72f729cd0621", // The ID of your service instance.
+      onLoad: function(instance) { instance.render(); }
+    };
+  setTimeout(function(){
+    const t=document.createElement('script');
+    t.src="https://web-chat.global.assistant.watson.appdomain.cloud/loadWatsonAssistantChat.js";
+    document.head.appendChild(t);
+  });
+</script> 
